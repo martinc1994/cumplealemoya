@@ -53,7 +53,7 @@ function initCountdown() {
 
     if (statusEl) {
       if (days > 15) {
-        statusEl.textContent = `Faltan ${days} días... ¡Andá comprando el fernet y el hielo! 🧊`;
+        statusEl.textContent = `Faltan ${days} días... ¡Andá preparandote para la mejor fiesta! 🧊`;
       } else if (days > 7) {
         statusEl.textContent = `¡Solo ${days} días! Marinate la carne y prepará la camperita para la noche en Raco ⛰️`;
       } else if (days > 2) {
