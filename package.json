@@ -1,0 +1,13 @@
+{
+  "name": "cumple-ale-35",
+  "version": "1.0.0",
+  "description": "Sitio web de cumpleaños estilo coming soon con cuenta regresiva para Ale - Raco 2026",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["cumple", "invitacion", "raco", "cuenta-regresiva"],
+  "author": "Antigravity",
+  "license": "MIT"
+}

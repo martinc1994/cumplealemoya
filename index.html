@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Cumpleañito de Ale 35 | Más Vieja, Más Turbia | Raco 2026</title>
+  <meta name="description" content="Sitio oficial del cumple de Ale en Raco: jornada con asado, fiesta, cuenta regresiva y cero responsabilidad. Sábado 14 de Noviembre. ¡Traer bebida!">
+  <meta name="theme-color" content="#ff2a85">
+
+  <!-- Open Graph / WhatsApp Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="¡Es mi cumpleañito perras! Ale cumple 35 en Raco">
+  <meta property="og:description" content="Se festeja como se debe: comida, bebida y cero responsabilidad. Sábado 14 de Noviembre en Raco.">
+  <meta property="og:image" content="Tarjeta.jpeg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Permanent+Marker&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,700&family=Outfit:wght@600;700;800;900&family=Bangers&display=swap" rel="stylesheet">
+
+  <!-- Leaflet CSS for Interactive Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
+</head>
+<body>
+
+  <!-- Floating Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Sticky Top Quick Bar (Simplificado sin menú de navegación) -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-brand">
+        <span class="brand-crown">👑</span>
+        <span class="brand-text">ALE <span class="highlight-pink">35</span></span>
+      </a>
+
+      <div class="nav-actions">
+        <button id="btn-sound-toggle" class="icon-btn" title="Activar/Desactivar Sonido" aria-label="Sonido">
+          <span id="sound-icon">🔊</span>
+        </button>
+        <button id="btn-festejo" class="festejo-btn" title="¡Tirar Confetti!">
+          🎉 ¡Festejar!
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO / COMING SOON SECTION -->
+  <section class="hero-section" id="hero">
+    <div class="hero-bg-doodles">
+      <div class="doodle doodle-star star-1">★</div>
+      <div class="doodle doodle-star star-2">✦</div>
+      <div class="doodle doodle-star star-3">★</div>
+      <div class="doodle doodle-heart heart-1">♡</div>
+      <div class="doodle doodle-heart heart-2">♥</div>
+      <div class="doodle doodle-heart heart-3">♡</div>
+      <div class="doodle doodle-sparkle sp-1">✨</div>
+      <div class="doodle doodle-sparkle sp-2">✨</div>
+      <div class="doodle doodle-lines lines-1">///</div>
+      <div class="doodle doodle-lines lines-2">\\\</div>
+    </div>
+
+    <div class="container hero-content">
+      <!-- Top banner badge -->
+      <div class="pill-badge-alert pulse-glow">
+        <span class="pill-dot"></span>
+        <span class="pill-text">⚡ RACO • SÁBADO 14 DE NOVIEMBRE ⚡</span>
+      </div>
+
+      <!-- Main Headline styled like the card -->
+      <div class="hero-titles">
+        <div class="tag-crown-wrap">
+          <span class="crown-icon">👑</span>
+          <h2 class="hero-script-tag">MÁS VIEJA, MÁS TURBIA</h2>
+          <span class="heart-doodle">♡</span>
+        </div>
+
+        <div class="sign-blackboard tilt-left">
+          <div class="tape-strip tape-top-center"></div>
+          <div class="chalk-corners">
+            <span>\</span><span>/</span>
+          </div>
+          <h1 class="sign-title">
+            <span class="sign-line-1">ES MI</span>
+            <span class="sign-line-2">CUMPLEAÑITO</span>
+            <span class="sign-line-3">PERRAS</span>
+          </h1>
+          <div class="chalk-doodles">
+            <span class="chalk-star">★</span>
+            <span class="chalk-heart">♡</span>
+            <span class="chalk-lines">///</span>
+          </div>
+        </div>
+
+        <!-- 35 Milestone Flork Meme Banner -->
+        <div class="milestone-badge-box">
+          <div class="milestone-text">
+            <span class="badge-sub">Festejando los</span>
+            <span class="badge-age">35</span>
+            <span class="badge-bye">Chau 34 👋</span>
+          </div>
+          <div class="milestone-quote">
+            “Se festeja como se debe: comida, bebida y cero responsabilidad. ♡”
+          </div>
+        </div>
+      </div>
+
+      <!-- LIVE COUNTDOWN TIMER -->
+      <div class="countdown-wrapper" id="countdown-section">
+        <div class="tape-strip tape-corner-left"></div>
+        <div class="tape-strip tape-corner-right"></div>
+        
+        <div class="countdown-header">
+          <div class="countdown-eyebrow">
+            <span class="fire-icon">🔥</span>
+            <span>CUENTA REGRESIVA PARA EL DESCONTROL</span>
+            <span class="fire-icon">🔥</span>
+          </div>
+          <div class="countdown-date-badge">
+            SÁBADO 14 DE NOVIEMBRE • DESDE EL MEDIODÍA (13:00 HS)
+          </div>
+        </div>
+
+        <div class="countdown-grid" id="countdown-grid">
+          <div class="countdown-card" id="card-days">
+            <div class="counter-num-box">
+              <span class="counter-num" id="days">--</span>
+            </div>
+            <span class="counter-label">DÍAS</span>
+          </div>
+
+          <div class="countdown-separator">:</div>
+
+          <div class="countdown-card" id="card-hours">
+            <div class="counter-num-box">
+              <span class="counter-num" id="hours">--</span>
+            </div>
+            <span class="counter-label">HORAS</span>
+          </div>
+
+          <div class="countdown-separator">:</div>
+
+          <div class="countdown-card" id="card-minutes">
+            <div class="counter-num-box">
+              <span class="counter-num" id="minutes">--</span>
+            </div>
+            <span class="counter-label">MINUTOS</span>
+          </div>
+
+          <div class="countdown-separator">:</div>
+
+          <div class="countdown-card" id="card-seconds">
+            <div class="counter-num-box">
+              <span class="counter-num" id="seconds">--</span>
+            </div>
+            <span class="counter-label">SEGUNDOS</span>
+          </div>
+        </div>
+
+        <div class="countdown-status" id="countdown-status-text">
+          Cargando cuenta regresiva... ¡Empezá a enfriar el fernet! 🧊
+        </div>
+
+        <!-- Quick Hero CTAs -->
+        <div class="hero-cta-buttons">
+          <a href="https://wa.me/5493816434253?text=%C2%A1Hola%20Ale!%20%F0%9F%8E%89%20Confirmo%20que%20voy%20a%20tu%20cumple%20de%2035%20en%20Raco%20el%20s%C3%A1bado%2014%20%F0%9F%A5%A9%F0%9F%8D%BE%20%C2%A1Llevo%20bebida%20para%20tomar%20mucho!%20Cero%20responsabilidad%20%E2%99%A1" target="_blank" rel="noopener noreferrer" class="btn btn-primary pulse-btn">
+            🍷 Confirmar Asistencia
+          </a>
+          <a href="#ubicacion-section" class="btn btn-secondary">
+            📍 Cómo Llegar a Raco (GPS)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TARJETA ORIGINAL / SHOWCASE -->
+  <section class="section tarjeta-showcase-section" id="tarjeta-section">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="stamp-pill">INVITACIÓN OFICIAL</span>
+        <h2 class="section-title">LA TARJETA DE INVITACIÓN</h2>
+        <p class="section-subtitle">Hacé click en la tarjeta para verla en pantalla completa o descargarla</p>
+      </div>
+
+      <div class="tarjeta-display-container">
+        <!-- Floating stickers around card -->
+        <div class="floating-sticker sticker-drink">
+          <span class="sticker-bubble">🍾 ¡Para tomar mucho!</span>
+        </div>
+        <div class="floating-sticker sticker-cat">
+          <span class="sticker-bubble">🔪 Si no venís avisá...</span>
+        </div>
+
+        <div class="tarjeta-frame" id="tarjeta-card">
+          <div class="washi-tape washi-top-left"></div>
+          <div class="washi-tape washi-top-right"></div>
+          <div class="washi-tape washi-bottom-right"></div>
+
+          <div class="image-wrapper" id="open-lightbox-trigger">
+            <img src="Tarjeta.jpeg" alt="Tarjeta Oficial Cumple Ale 35 en Raco" class="tarjeta-img" loading="eager" id="tarjeta-main-img">
+            <div class="image-overlay">
+              <span class="zoom-icon">🔍</span>
+              <span class="zoom-text">Ver tarjeta en grande</span>
+            </div>
+          </div>
+
+          <div class="tarjeta-footer-actions">    
+            <a href="Tarjeta.jpeg" download="Cumple-Ale-35-Tarjeta.jpeg" class="btn btn-sm btn-dark">
+              📥 Descargar Imagen
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EL PLAN: ASADO Y FIESTA (JORNADA COMPLETA) -->
+  <section class="section itinerario-section" id="itinerario-section">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="brush-pink-badge">CRONOGRAMA DE LA JORNADA</span>
+        <h2 class="section-title">ASADO, MONTAÑA & FIESTA</h2>
+        <p class="section-subtitle">Se festeja como se debe: comida, bebida y cero responsabilidad.</p>
+      </div>
+
+      <div class="grid-cards-3">
+        <!-- Card 1 -->
+        <div class="plan-card tilt-card-1">
+          <div class="tape-strip tape-plan"></div>
+          <div class="plan-card-top">
+            <div class="plan-icon-wrap">🥩🔥</div>
+            <div class="plan-time-tag">13:00 HS • EL ARRANQUE</div>
+            <h3 class="plan-card-title">El Asadaje</h3>
+          </div>
+          <div class="plan-card-footer">
+            <span class="plan-highlight">🍖 Carne & fogón garantizado</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="plan-card tilt-card-2 highlight-border">
+          <div class="tape-strip tape-plan"></div>
+          <div class="plan-card-top">
+            <div class="plan-icon-wrap">🍾🥂</div>
+            <div class="plan-time-tag mandatory-tag">¡RECORDATORIO!</div>
+            <h3 class="plan-card-title">¡Traer Bebida!</h3>
+          </div>
+          <div class="plan-card-footer">
+            <span class="plan-highlight pink">🍷 Cero tolerancia al vaso vacío</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="plan-card tilt-card-3">
+          <div class="tape-strip tape-plan"></div>
+          <div class="plan-card-top">
+            <div class="plan-icon-wrap">🎉💃</div>
+            <div class="plan-time-tag">ENTRE AMIGOS</div>
+            <h3 class="plan-card-title">Fiesta & Descontrol</h3>
+          </div>
+          <div class="plan-card-footer">
+            <span class="plan-highlight">✨ Cero responsabilidad</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner quote -->
+      <div class="quote-banner-box">
+        <div class="quote-text">
+          “NO PODES DECIR QUE NO” ♡
+        </div>
+        <div class="quote-sub">
+          Estás oficialmente advertido/a: Vení con ropa cómoda y ganas de darlo todo.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN: RACO (NO TAFÍ VIEJO) -->
+  <section class="section ubicacion-section" id="ubicacion-section">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="brush-pink-badge">COORDENADAS & GPS</span>
+        <h2 class="section-title">📍 LA CASA EN RACO</h2>
+        <p class="section-subtitle">Tucumán, Argentina • El lugar ideal en las sierras</p>
+      </div>
+
+      <!-- Clarification Box (Crucial User Requirement) -->
+      <div class="clarification-callout">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-content">
+          <h4 class="callout-title">¡ACLARACIÓN IMPORTANTE SOBRE EL GPS!</h4>
+          <p class="callout-desc">
+            Al abrir el link de Google Maps, es muy probable que figure como <strong>"Tafí Viejo"</strong>Pero el lugar  es <strong>RACO</strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="ubicacion-grid centered-map-layout">
+        <!-- Map Card & Details -->
+        <div class="map-container-card">
+          <div class="map-header">
+            <div class="map-title-bar">
+              <span class="map-dot red"></span>
+              <span class="map-dot yellow"></span>
+              <span class="map-dot green"></span>
+            </div>
+            <button id="btn-recenter-map" class="btn-map-control" title="Centrar Mapa">🎯 Centrar</button>
+          </div>
+
+          <!-- Leaflet Interactive Map -->
+          <div id="interactive-map" class="leaflet-map-frame"></div>
+
+          <div class="map-actions-bar">
+            <a href="https://maps.app.goo.gl/xSNASSPXuCJNYqit8" target="_blank" rel="noopener noreferrer" class="btn-map btn-google">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              Abrir en Google Maps
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN CONFIRMAR ASISTENCIA (WHATSAPP DIRECTO A ALE) -->
+  <section class="section rsvp-section" id="rsvp-section">
+    <div class="container">
+      <div class="rsvp-card-wrapper rsvp-direct-card">
+        <div class="washi-tape washi-rsvp-left"></div>
+        <div class="washi-tape washi-rsvp-right"></div>
+
+        <div class="section-title-wrap" style="margin-bottom: 24px;">
+          <span class="brush-pink-badge">CONFIRMÁ TU PRESENCIA</span>
+          <h2 class="section-title">¿VENÍS AL CUMPLEAÑITO?</h2>
+          <p class="section-subtitle">Avisame por WhatsApp así te espero para compartir una gran tarde.</p>
+        </div>
+
+        <div class="whatsapp-cta-card">
+          <div class="wa-quote-tag">
+            “Comida, bebida y cero responsabilidad. ♡”
+          </div>
+
+          <a href="https://wa.me/5493816434253?text=%C2%A1Hola%20Ale!%20%F0%9F%8E%89%20Confirmo%20que%20voy%20a%20tu%20cumple%20de%2035%20en%20Raco%20el%20s%C3%A1bado%2014%20%F0%9F%A5%A9%F0%9F%8D%BE%20%C2%A1Llevo%20bebida%20para%20tomar%20mucho!%20Cero%20responsabilidad%20%E2%99%A1" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="btn btn-whatsapp-direct pulse-btn" 
+             id="btn-confirm-wa-main">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.55C9.33 7.55 9.09 7.62 8.89 7.84C8.68 8.06 8.1 8.61 8.1 9.73C8.1 10.85 8.92 11.93 9.03 12.09C9.15 12.24 10.63 14.53 12.92 15.51C13.47 15.75 13.9 15.9 14.23 16C14.78 16.18 15.28 16.15 15.68 16.09C16.12 16.03 17.03 15.54 17.22 15.01C17.41 14.47 17.41 14.02 17.35 13.92C17.29 13.82 17.15 13.76 16.94 13.66C16.73 13.55 15.69 13.04 15.5 12.97C15.31 12.9 15.17 12.86 15.03 13.07C14.89 13.28 14.49 13.76 14.37 13.89C14.25 14.03 14.13 14.05 13.92 13.95C13.71 13.84 13.03 13.62 12.23 12.91C11.61 12.35 11.19 11.66 11.07 11.45C10.95 11.24 11.06 11.13 11.16 11.03C11.26 10.93 11.37 10.78 11.48 10.66C11.59 10.53 11.62 10.43 11.7 10.28C11.78 10.13 11.73 10 11.68 9.9C11.63 9.8 11.22 8.78 11.05 8.37C10.88 7.97 10.71 8.02 10.58 8.02C10.46 8.02 10.32 8.01 10.18 8.01C10.04 8.01 9.82 8.06 9.63 8.27C9.44 8.48 9.53 7.55 9.53 7.55Z"/></svg>
+            Confirmar Asistencia
+          </a>
+
+          <div class="wa-preview-box">
+            <span class="preview-title">💬 Mensaje predefinido:</span>
+            <p class="preview-text">
+              “¡Hola Ale! 🎉 Confirmo que voy a tu cumple de 35 en Raco el sábado 14 🥩🍾 ¡Llevo bebida para tomar mucho! Cero responsabilidad ♡”
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX MODAL FOR TARJETA -->
+  <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true" role="dialog">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-dialog">
+      <button class="lightbox-close" id="lightbox-close" title="Cerrar">&times;</button>
+      <div class="lightbox-content">
+        <img src="Tarjeta.jpeg" alt="Tarjeta Oficial Cumple Ale 35" class="lightbox-image">
+      </div>
+      <div class="lightbox-caption">
+        <span>💌 Tarjeta de Invitación Oficial • Ale 35 • Raco 2026</span>
+        <a href="Tarjeta.jpeg" download="Tarjeta-Cumple-Ale.jpeg" class="btn btn-sm btn-pink">Descargar</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-doodles">
+        <span>★</span><span>♡</span><span>👑</span><span>♡</span><span>★</span>
+      </div>
+      <p class="footer-title">CUMPLEAÑITO DE ALE • 35 AÑOS</p>
+      <p class="footer-location">📍 Raco, Tucumán • Sábado 14 de Noviembre</p>
+      <p class="footer-rules">“Comida, bebida y cero responsabilidad.”</p>
+      <div class="footer-bottom">
+        <span>Hecho con amor, humo de asado y mucho glitter 🍷</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Main Application Script -->
+  <script src="app.js"></script>
+</body>
+</html>
