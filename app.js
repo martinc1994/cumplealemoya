@@ -1,6 +1,6 @@
 /* ==========================================================================
    CUMPLE ALE 35 - APP.JS
-   Lógica interactiva: Cuenta regresiva, Mapa Leaflet Raco,
+   Lógica interactiva: Cuenta regresiva, Mapa Leaflet Yerba Buena,
    Confetti Engine, Sonidos Web Audio, Lightbox y Botones WhatsApp
    ========================================================================== */
 
@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ==========================================================================
    1. CUENTA REGRESIVA (COUNTDOWN TIMER)
-   Target: Sábado 14 de Noviembre de 2026 a las 13:00 hs (UTC-3 Argentina)
+   Target: Sábado 14 de Noviembre de 2026 a las 22:00 hs (UTC-3 Argentina)
    ========================================================================== */
 function initCountdown() {
-  const targetDate = new Date('2026-11-14T13:00:00-03:00').getTime();
+  const targetDate = new Date('2026-11-14T22:00:00-03:00').getTime();
 
   const daysEl = document.getElementById('days');
   const hoursEl = document.getElementById('hours');
@@ -36,7 +36,7 @@ function initCountdown() {
       if (minutesEl) minutesEl.textContent = '00';
       if (secondsEl) secondsEl.textContent = '00';
       if (statusEl) {
-        statusEl.innerHTML = '🔥 ¡HOY ES EL CUMPLE! ¡NOS VEMOS EN RACO PARA EL ASADO Y LA FIESTA! 🔥';
+        statusEl.innerHTML = '🔥 ¡HOY ES EL CUMPLE! ¡NOS VEMOS EN YERBA BUENA A LAS 22 HS PARA EL DESCONTROL! 🔥';
       }
       return;
     }
@@ -53,15 +53,15 @@ function initCountdown() {
 
     if (statusEl) {
       if (days > 15) {
-        statusEl.textContent = `Faltan ${days} días... ¡Andá preparandote para la mejor fiesta! 🧊`;
+        statusEl.textContent = `Faltan ${days} días... ¡Andá preparando la bebida y las ganas de bailar! 🧊`;
       } else if (days > 7) {
-        statusEl.textContent = `¡Solo ${days} días! Marinate la carne y prepará la camperita para la noche en Raco ⛰️`;
+        statusEl.textContent = `¡Solo ${days} días! Elegí el outfit y prepará la bebida para el sábado 14 🍾`;
       } else if (days > 2) {
         statusEl.textContent = `¡Entramos en la recta final! Cuenta regresiva activada. Cero responsabilidad ♡`;
       } else if (days === 1) {
-        statusEl.textContent = `¡MAÑANA! Cargá el mapa, prepará la bebida y salí temprano para el asado 🚗🥩`;
+        statusEl.textContent = `¡MAÑANA! Cargá el mapa y prepará la bebida que a las 22 hs arranca la noche 🚗🍷`;
       } else {
-        statusEl.textContent = `¡Faltan horas! ${hours}h ${minutes}m para que arranque el descontrol en Raco 🔥`;
+        statusEl.textContent = `¡Faltan horas! ${hours}h ${minutes}m para que arranque el cumpleañito en Yerba Buena 🔥`;
       }
     }
   }
@@ -71,11 +71,11 @@ function initCountdown() {
 }
 
 /* ==========================================================================
-   2. MAPA INTERACTIVO (LEAFLET - RACO, TUCUMÁN)
-   Coordenadas exactas: -26.696229, -65.431651
+   2. MAPA INTERACTIVO (LEAFLET - YERBA BUENA, TUCUMÁN)
+   Coordenadas exactas: -26.809209, -65.314655 (Av. Aconquija 2960)
    ========================================================================== */
 let mapInstance = null;
-const RACO_COORDS = [-26.696229, -65.431651];
+const YERBA_BUENA_COORDS = [-26.809209, -65.314655];
 
 function initMap() {
   const mapContainer = document.getElementById('interactive-map');
@@ -83,15 +83,15 @@ function initMap() {
 
   try {
     mapInstance = L.map('interactive-map', {
-      center: RACO_COORDS,
-      zoom: 14,
+      center: YERBA_BUENA_COORDS,
+      zoom: 16,
       scrollWheelZoom: false
     });
 
     // Clean OpenStreetMap tiles
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors | Raco, Tucumán',
-      maxZoom: 18
+      attribution: '&copy; OpenStreetMap contributors | Yerba Buena, Tucumán',
+      maxZoom: 19
     }).addTo(mapInstance);
 
     // Custom Pink Marker Pin
@@ -118,13 +118,13 @@ function initMap() {
       popupAnchor: [0, -40]
     });
 
-    const marker = L.marker(RACO_COORDS, { icon: customIcon }).addTo(mapInstance);
+    const marker = L.marker(YERBA_BUENA_COORDS, { icon: customIcon }).addTo(mapInstance);
 
     const popupContent = `
-      <div style="font-family: 'Plus Jakarta Sans', sans-serif; text-align: center; padding: 4px;">
+      <div style="font-family: 'Plus Jakarta Sans', sans-serif; text-align: center; padding: 6px 4px;">
         <h4 style="margin: 0; color: #111; font-weight: 800; font-size: 14px;">👑 CUMPLE ALE 35</h4>
-        <p style="margin: 4px 0 0; color: #FF2B85; font-weight: 700; font-size: 12px;">📍 RACO, TUCUMÁN</p>
-        <p style="margin: 2px 0 0; font-size: 11px; color: #666;">(Aunque Maps diga Tafí Viejo, ¡es acá en Raco!)</p>
+        <p style="margin: 4px 0 0; color: #FF2B85; font-weight: 700; font-size: 13px;">📍 AV. ACONQUIJA 2960</p>
+        <p style="margin: 2px 0 0; font-size: 11px; color: #555;">El Corte, Yerba Buena • 22:00 Hs</p>
       </div>
     `;
 
@@ -134,17 +134,17 @@ function initMap() {
     const btnRecenter = document.getElementById('btn-recenter-map');
     if (btnRecenter) {
       btnRecenter.addEventListener('click', () => {
-        mapInstance.setView(RACO_COORDS, 15);
+        mapInstance.setView(YERBA_BUENA_COORDS, 16);
         marker.openPopup();
         playSound('pop');
       });
     }
 
-    // Copy coords button
+    // Copy coords / address button
     const btnCopy = document.getElementById('btn-copy-coords');
     if (btnCopy) {
       btnCopy.addEventListener('click', () => {
-        const coords = btnCopy.getAttribute('data-coords') || '-26.696229, -65.431651';
+        const coords = btnCopy.getAttribute('data-coords') || 'Av. Aconquija 2960, Yerba Buena, Tucumán';
         navigator.clipboard.writeText(coords).then(() => {
           const originalText = btnCopy.innerHTML;
           btnCopy.innerHTML = '✅ ¡Copiado!';
@@ -166,9 +166,15 @@ function initMap() {
 /* ==========================================================================
    3. BOTONES WHATSAPP (CONFETI & SONIDO AL CONFIRMAR)
    ========================================================================== */
+const WA_PHONE = '5493816434253';
+const WA_MESSAGE = '¡Hola Ale! 🎉 Confirmo que voy a tu cumple de 35 en Yerba Buena el sábado 14 a las 22 hs 🍷🍾 ¡Llevo bebida para tomar mucho! Cero responsabilidad ♡';
+
 function initWhatsAppButtons() {
-  const waBtns = document.querySelectorAll('a[href*="wa.me"]');
+  const fullUrl = `https://api.whatsapp.com/send?phone=${WA_PHONE}&text=${encodeURIComponent(WA_MESSAGE)}`;
+  
+  const waBtns = document.querySelectorAll('a[href*="whatsapp.com"], a[href*="wa.me"]');
   waBtns.forEach(btn => {
+    btn.href = fullUrl;
     btn.addEventListener('click', () => {
       playSound('horn');
       triggerConfetti(90);
@@ -216,8 +222,8 @@ function initLightbox() {
   if (btnShare && navigator.share) {
     btnShare.addEventListener('click', () => {
       navigator.share({
-        title: 'Cumple de Ale 35 en Raco',
-        text: '¡Es mi cumpleañito perras! Te invito a festejar el Sábado 14 en Raco.',
+        title: 'Cumple de Ale 35 en Yerba Buena',
+        text: '¡Es mi cumpleañito perras! Te invito a festejar el Sábado 14 a las 22 hs en Yerba Buena.',
         url: window.location.href
       }).catch(() => {});
     });

@@ -839,7 +839,7 @@ body {
 }
 
 /* ==========================================================================
-   ITINERARIO / 3 PILLARS (ASADO, BEBIDA, FIESTA)
+   ITINERARIO / 3 PILLARS (COMIDA, BEBIDA, FIESTA)
    ========================================================================== */
 .grid-cards-3,
 .grid-cards-4 {
@@ -971,7 +971,7 @@ body {
 }
 
 /* ==========================================================================
-   UBICACIÓN & MAPA (RACO - CENTRADO Y LIMPIO)
+   UBICACIÓN & MAPA (YERBA BUENA - CENTRADO Y LIMPIO)
    ========================================================================== */
 .clarification-callout {
   background: #FFFBEB;
@@ -1122,6 +1122,61 @@ body {
   color: #fff;
 }
 .btn-copy:hover { background: #27272A; transform: translateY(-2px); }
+
+/* ==========================================================================
+   FACHADA / ENTRADA PREVIEW CARD
+   ========================================================================== */
+.facade-card-container {
+  max-width: 860px;
+  margin: 32px auto 0;
+}
+
+.facade-card {
+  background: #ffffff;
+  border: 2px solid var(--paper-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  position: relative;
+}
+
+.facade-badge-tag {
+  display: inline-block;
+  background: var(--dark-blackboard);
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.facade-image-frame {
+  width: 100%;
+  max-height: 440px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 2px solid #E4E4E7;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+}
+
+.facade-img {
+  width: 100%;
+  height: auto;
+  max-height: 440px;
+  object-fit: cover;
+  display: block;
+}
+
+.facade-note {
+  margin-top: 14px;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  line-height: 1.5;
+}
 
 /* ==========================================================================
    CONFIRMACIÓN WHATSAPP (SIMPLIFICADA)
